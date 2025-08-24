@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Spreadsheet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📊 New Spreadsheet</h1>
+  </header>
+
+  <div class="editor">
+    <table id="spreadsheet" border="1" cellspacing="0" cellpadding="10" style="background:#fff; border-radius:10px; width:100%; color:#000;">
+      <tr>
+        <td contenteditable="true">A1</td>
+        <td contenteditable="true">B1</td>
+        <td contenteditable="true">C1</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">A2</td>
+        <td contenteditable="true">B2</td>
+        <td contenteditable="true">C2</td>
+      </tr>
+    </table>
+    <br>
+    <button onclick="addRow()">➕ Add Row</button>
+    <button onclick="addCol()">➕ Add Column</button>
+    <br><br>
+    <a href="index.html" class="back-btn">⬅ Back</a>
+  </div>
+
+  <footer>
+    <p>© 2025 CreateNew App</p>
+  </footer>
+
+  <script>
+    function addRow() {
+      const table = document.getElementById("spreadsheet");
+      const cols = table.rows[0].cells.length;
+      const newRow = table.insertRow();
+      for (let i = 0; i < cols; i++) {
+        const cell = newRow.insertCell(i);
+        cell.contentEditable = "true";
+        cell.innerText = "";
+      }
+    }
+
+    function addCol() {
+      const table = document.getElementById("spreadsheet");
+      for (let i = 0; i < table.rows.length; i++) {
+        const cell = table.rows[i].insertCell();
+        cell.contentEditable = "true";
+        cell.innerText = "";
+      }
+    }
+  </script>
+</body>
+</html>
